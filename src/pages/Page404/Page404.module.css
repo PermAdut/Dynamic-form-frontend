@@ -1,0 +1,25 @@
+.center_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  height: 90vh;
+}
+
+.center_container h1 {
+  color: red;
+}
+
+.center_container button {
+  height: 50px;
+  width: 200px;
+  text-align: center;
+  font-size: 1rem;
+  background: white;
+  transition: all 0.2s ease;
+}
+
+.center_container button:hover {
+  background: green;
+}
