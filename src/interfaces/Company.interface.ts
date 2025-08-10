@@ -7,7 +7,7 @@ export interface Company{
     telephone?: string,
     country: Country
     isGlobal:boolean,
-    globalMarket?: GlobalMarket[], 
+    globalMarkets?: GlobalMarket[], 
     globalMarketKeySecretIndex?: string,
     projects?: Project[],
 }

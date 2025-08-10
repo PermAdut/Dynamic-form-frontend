@@ -1,7 +1,7 @@
 import { useState } from "react";
 import type { Project } from "../../interfaces/Project.interface";
 import ProjectListItem from "../ProjectListItem/ProjectListItem";
-import EmptyLayout from "../ui/EmptyLayout";
+import EmptyLayout from "../ui/EmptyLayout/EmptyLayout";
 import styles from "./ProjectList.module.css";
 export interface ProjectListProps {
   projects: Project[];
@@ -16,7 +16,7 @@ const ProjectList = (props: ProjectListProps) => {
   );
   return (
     <div className={styles.project_list}>
-      <EmptyLayout exist={props.projects.length > 0}>
+      <EmptyLayout exist={props.projects.length > 0} text="No projects">
         {paginatedProjects.map((el, index) => (
           <ProjectListItem
             key={index}
@@ -34,7 +34,7 @@ const ProjectList = (props: ProjectListProps) => {
             onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
             disabled={currentPage === 1}
           >
-            Назад
+            Back
           </button>
           <span className={styles.project_list_cur_page}>
             {currentPage} / {totalPages}
@@ -46,7 +46,7 @@ const ProjectList = (props: ProjectListProps) => {
             }
             disabled={currentPage === totalPages}
           >
-            Вперед
+            Forward
           </button>
         </div>
       )}

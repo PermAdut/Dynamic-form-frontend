@@ -1,8 +1,8 @@
 export enum GlobalMarket {
-  NorthAmerica = 'NORTH AMERICA',
-  Europe = 'EUROPE',
-  AsiaPacific = 'ASIA PACIFIC',
-  SouthAmerica = 'SOUTH AMERICA',
-  Africa = 'AFRICA',
-  MiddleEast = 'MIDDLE EAST',
+  NORTH_AMERICA = 'NORTH AMERICA',
+  EUROPE= 'EUROPE',
+  ASIA_PACIFIC = 'ASIA PACIFIC',
+  SOUTH_AMERICA = 'SOUTH AMERICA',
+  AFRICA = 'AFRICA',
+  MIDDLE_EAST = 'MIDDLE EAST',
 }

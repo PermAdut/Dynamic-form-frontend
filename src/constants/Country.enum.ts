@@ -1,11 +1,11 @@
 export enum Country {
-  UnitedStates = 'US',
-  Canada = 'CA',
-  UnitedKingdom = 'GB',
-  Germany = 'DE',
-  France = 'FR',
-  Japan = 'JP',
-  Australia = 'AU',
+  USA = 'US',
+  CANADA = 'CA',
+  UK = 'GB',
+  GERMANY = 'DE',
+  FRANCE = 'FR',
+  JAPAN = 'JP',
+  AUSTRALIA = 'AU',
   POLAND = 'PL',
   ITALY = 'IT',
 }
