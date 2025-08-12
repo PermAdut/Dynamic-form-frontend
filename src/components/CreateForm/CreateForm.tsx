@@ -12,8 +12,20 @@ import { Status } from "../../constants/Status.enum";
 import FormGroup from "../../components/FormGroup/FormGroup";
 import ValidationError from "../ValidationError/ValidationError";
 import { createCompany } from "../../api/createCompany";
+import type { Project } from "../../interfaces/Project.interface";
 
-export default function CreateForm() {
+export interface CreateFormProps{
+  name: string;
+  creationDate: Date,
+  telephone?: string,
+  country: Country,
+  isGlobal: boolean,
+  globalMarkets?: GlobalMarket[],
+  globalMarketKeySecretIndex?: string,
+  projects?: Project[],
+}
+
+export default function CreateForm(props: CreateFormProps) {
   const navigate = useNavigate();
   const countryOptions = Object.values(Country);
   const globalMarketOptions = Object.values(GlobalMarket);
@@ -28,14 +40,14 @@ export default function CreateForm() {
   } = useForm<CompanyFormType>({
     resolver: yupResolver(companySchema),
     defaultValues: {
-      name: "",
-      creationDate: new Date(),
-      telephone: "",
-      country: Country.USA,
-      isGlobal: false,
-      globalMarkets: [],
-      globalMarketKeySecretIndex: "",
-      projects: [],
+      name: props.name,
+      creationDate: props.creationDate,
+      telephone: props.telephone,
+      country: props.country,
+      isGlobal: props.isGlobal,
+      globalMarkets: props.globalMarkets,
+      globalMarketKeySecretIndex: props.globalMarketKeySecretIndex,
+      projects: props.projects,
     },
   });
 

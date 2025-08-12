@@ -31,9 +31,9 @@ const CompanyListItem = (props: Company) => {
           <span className={styles.company_global_index}>
             Global Market Index: {props.globalMarketKeySecretIndex || "N/A"}
           </span>
-          {props.projects && <ProjectList projects={props.projects} />}
         </div>
       )}
+      {props.projects && <ProjectList projects={props.projects} />}
       <div className={styles.company_edit}><EditCompanyItem /></div>
     </div>
   );
