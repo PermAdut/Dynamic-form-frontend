@@ -10,6 +10,7 @@ import { Country } from "../../constants/Country.enum";
 import { GlobalMarket } from "../../constants/GlobalMarket.enum";
 import { Status } from "../../constants/Status.enum";
 import FormGroup from "../../components/FormGroup/FormGroup";
+import ValidationError from "../ValidationError/ValidationError";
 
 export default function CreateForm() {
   const navigate = useNavigate();
@@ -23,7 +24,7 @@ export default function CreateForm() {
     watch,
     formState: { errors },
     setValue,
-  } = useForm({
+  } = useForm<CompanyFormType>({
     resolver: yupResolver(companySchema),
     defaultValues: {
       name: "",
@@ -54,7 +55,6 @@ export default function CreateForm() {
   };
   return (
     <>
-      {" "}
       <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
         <div className={styles.form_grid}>
           <div className={styles.form_group}>
@@ -74,11 +74,10 @@ export default function CreateForm() {
                 ),
               }}
             />
-            {errors.name && (
-              <span className={styles.error_message}>
-                {errors.name.message}
-              </span>
-            )}
+            <ValidationError
+              isError={Boolean(errors.name)}
+              message={errors.name?.message}
+            />
           </div>
           <div className={styles.form_group}>
             <FormGroup
@@ -102,11 +101,10 @@ export default function CreateForm() {
                 ),
               }}
             />
-            {errors.creationDate && (
-              <span className={styles.error_message}>
-                {errors.creationDate.message}
-              </span>
-            )}
+            <ValidationError
+              isError={Boolean(errors.creationDate)}
+              message={errors.creationDate?.message}
+            />
           </div>
 
           <div className={styles.form_group}>
@@ -127,11 +125,10 @@ export default function CreateForm() {
                 ),
               }}
             />
-            {errors.telephone && (
-              <span className={styles.error_message}>
-                {errors.telephone.message}
-              </span>
-            )}
+            <ValidationError
+              isError={Boolean(errors.telephone)}
+              message={errors.telephone?.message}
+            />
           </div>
 
           <div className={styles.form_group}>
@@ -152,11 +149,10 @@ export default function CreateForm() {
                 ),
               }}
             />
-            {errors.country && (
-              <span className={styles.error_message}>
-                {errors.country.message}
-              </span>
-            )}
+            <ValidationError
+              isError={Boolean(errors.country)}
+              message={errors.country?.message}
+            />
           </div>
 
           <div className={styles.form_group}>
@@ -235,11 +231,10 @@ export default function CreateForm() {
                     ),
                   }}
                 />
-                {errors.globalMarkets && (
-                  <span className={styles.error_message}>
-                    {errors.globalMarkets.message}
-                  </span>
-                )}
+                <ValidationError
+                  isError={Boolean(errors.globalMarkets)}
+                  message={errors.globalMarkets?.message}
+                />
               </div>
 
               <div className={styles.form_group}>
@@ -260,11 +255,10 @@ export default function CreateForm() {
                     ),
                   }}
                 />
-                {errors.globalMarketKeySecretIndex && (
-                  <span className={styles.error_message}>
-                    {errors.globalMarketKeySecretIndex.message}
-                  </span>
-                )}
+                <ValidationError
+                  isError={Boolean(errors.globalMarketKeySecretIndex)}
+                  message={errors.globalMarketKeySecretIndex?.message}
+                />
               </div>
             </>
           )}
@@ -303,11 +297,10 @@ export default function CreateForm() {
                           ),
                         }}
                       />
-                      {errors.projects?.[index]?.name && (
-                        <span className={styles.error_message}>
-                          {errors.projects[index]?.name?.message}
-                        </span>
-                      )}
+                      <ValidationError
+                        isError={Boolean(errors.projects?.[index]?.name)}
+                        message={errors.projects ? errors.projects[index]?.name?.message: undefined}
+                      />
                     </div>
 
                     <div className={styles.form_group}>
@@ -327,11 +320,10 @@ export default function CreateForm() {
                           ),
                         }}
                       />
-                      {errors.projects?.[index]?.price && (
-                        <span className={styles.error_message}>
-                          {errors.projects[index]?.price?.message}
-                        </span>
-                      )}
+                      <ValidationError
+                        isError={Boolean(errors.projects?.[index]?.price)}
+                        message={errors.projects ? errors.projects[index]?.price?.message: undefined}
+                      />
                     </div>
 
                     <div className={styles.form_group}>
@@ -352,11 +344,10 @@ export default function CreateForm() {
                           ),
                         }}
                       />
-                      {errors.projects?.[index]?.status && (
-                        <span className={styles.error_message}>
-                          {errors.projects[index]?.status?.message}
-                        </span>
-                      )}
+                      <ValidationError
+                        isError={Boolean(errors.projects?.[index]?.status)}
+                        message={errors.projects ? errors.projects[index]?.status?.message: undefined}
+                      />
                     </div>
 
                     <button

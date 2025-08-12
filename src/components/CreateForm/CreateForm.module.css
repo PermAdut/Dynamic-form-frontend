@@ -78,12 +78,6 @@
   border-color: #c53030;
 }
 
-.error_message {
-  color: #e53e3e;
-  font-size: 0.9rem;
-  margin-top: 4px;
-}
-
 .form_group {
   display: flex;
   flex-direction: column;
