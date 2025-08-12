@@ -1,9 +1,12 @@
 import axios, { AxiosError } from "axios";
+import type { CompanyFormType } from "../schema/company.schema";
 import { BackendError } from "../interfaces/BackendError";
-export const getCompanies = async () => {
+
+export async function editCompany(id: string, data: Partial<CompanyFormType>) {
   try {
-    const response = await axios.get(
-      `${import.meta.env.VITE_API_SERVER_URL}/api/v1.0/companies`,
+    const response = await axios.patch(
+      `${import.meta.env.VITE_API_SERVER_URL}/api/v1.0/companies/${id}`,
+      data,
     );
     return response.data;
   } catch (err) {
@@ -12,4 +15,4 @@ export const getCompanies = async () => {
     }
     throw new BackendError("unknown error");
   }
-};
+}

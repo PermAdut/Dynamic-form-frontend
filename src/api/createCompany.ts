@@ -1,5 +1,6 @@
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import type { CompanyFormType } from "../schema/company.schema";
+import { BackendError } from "../interfaces/BackendError";
 
 export async function createCompany(data: CompanyFormType) {
   try {
@@ -8,7 +9,10 @@ export async function createCompany(data: CompanyFormType) {
       data,
     );
     return response.data;
-  } catch {
-    throw new Error("unknown error");
+  } catch(err) {
+    if(err instanceof AxiosError){
+      throw new BackendError(err.message)
+    }
+    throw new BackendError("unknown error");
   }
 }

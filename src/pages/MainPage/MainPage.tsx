@@ -2,7 +2,8 @@ import CompanyList from "../../components/CompanyList/CompanyList";
 import AddCompanyItem from "../../components/AddCompanyItem/AddCompanyItem";
 import { useEffect, useState } from "react";
 import type { Company } from "../../interfaces/Company.interface";
-import { getCompanies, GetError } from "../../api/getCompanies";
+import { getCompanies } from "../../api/getCompanies";
+import { BackendError } from "../../interfaces/BackendError";
 const MainPage = () => {
   const [companies, setCompanies] = useState<Company[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -14,7 +15,7 @@ const MainPage = () => {
         setCompanies(await getCompanies());
         setIsLoading(false);
       } catch (err: unknown) {
-        if (err instanceof GetError) {
+        if (err instanceof BackendError) {
           setIsError(err.message);
         }
         setIsError("unknown error");

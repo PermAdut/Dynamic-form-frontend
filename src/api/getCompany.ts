@@ -1,6 +1,5 @@
 import axios, { AxiosError } from "axios";
-import { GetError } from "./getCompanies";
-
+import { BackendError } from "../interfaces/BackendError";
 export const getCompany = async (id: number) => {
   try {
     const response = await axios.get(
@@ -9,8 +8,8 @@ export const getCompany = async (id: number) => {
     return response.data;
   } catch (err) {
     if (err instanceof AxiosError) {
-      throw new GetError(err.message);
+      throw new BackendError(err.message);
     }
-    throw new GetError("unknown error");
+    throw new BackendError("unknown error");
   }
 };

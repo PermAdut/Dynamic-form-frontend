@@ -4,7 +4,7 @@ import styles from "./EditPage.module.css";
 import type { Company } from "../../interfaces/Company.interface";
 import { getCompany } from "../../api/getCompany";
 import { useParams } from "react-router";
-import { GetError } from "../../api/getCompanies";
+import { BackendError } from "../../interfaces/BackendError";
 
 const EditPage = () => {
   const { id } = useParams();
@@ -15,11 +15,11 @@ const EditPage = () => {
     const handleCompany = async () => {
       try {
         setIsLoading(true);
-        if (!id) throw new GetError("Id is not specified");
+        if (!id) throw new BackendError("Id is not specified");
         setCompany(await getCompany(parseInt(id)));
         setIsLoading(false);
       } catch (err: unknown) {
-        if (err instanceof GetError) {
+        if (err instanceof BackendError) {
           setIsError(err.message);
         }
         setIsError("unknown error");
@@ -44,7 +44,6 @@ const EditPage = () => {
             globalMarketKeySecretIndex={company.globalMarketKeySecretIndex}
             projects={company.projects}
             btnText="Edit company"
-            isEdit={true}
           />
         </>
       )}

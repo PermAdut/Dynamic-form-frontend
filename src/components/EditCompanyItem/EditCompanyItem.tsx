@@ -4,7 +4,6 @@ export interface EditCompanyItemProps{
   id: number;
 }
 const EditCompanyItem = (props: EditCompanyItemProps) => {
-  console.log(props.id);
   const navigate = useNavigate();
   const handleClick = async () => {
     navigate(`/edit/${props.id}`)

@@ -1,7 +1,7 @@
 import styles from "./CreateForm.module.css";
 import { useForm, Controller, useFieldArray } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useNavigate } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import {
   companySchema,
   type CompanyFormType,
@@ -13,21 +13,22 @@ import FormGroup from "../../components/FormGroup/FormGroup";
 import ValidationError from "../ValidationError/ValidationError";
 import { createCompany } from "../../api/createCompany";
 import type { Project } from "../../interfaces/Project.interface";
+import { editCompany } from "../../api/editCompany";
 
-export interface CreateFormProps{
+export interface CreateFormProps {
   name: string;
-  creationDate: Date,
-  telephone?: string,
-  country: Country,
-  isGlobal: boolean,
-  globalMarkets?: GlobalMarket[],
-  globalMarketKeySecretIndex?: string,
-  projects?: Project[],
-  btnText: string,
-  isEdit: boolean,
+  creationDate: Date;
+  telephone?: string;
+  country: Country;
+  isGlobal: boolean;
+  globalMarkets?: GlobalMarket[];
+  globalMarketKeySecretIndex?: string;
+  projects?: Project[];
+  btnText: string;
 }
 
 export default function CreateForm(props: CreateFormProps) {
+  const { id } = useParams();
   const navigate = useNavigate();
   const countryOptions = Object.values(Country);
   const globalMarketOptions = Object.values(GlobalMarket);
@@ -60,13 +61,33 @@ export default function CreateForm(props: CreateFormProps) {
 
   const isGlobal = watch("isGlobal");
 
+  const getChangedParams = (
+    data: CompanyFormType,
+  ): Partial<CompanyFormType> => {
+    const result: Partial<CompanyFormType> = {};
+
+    for (const key in data) {
+      const currentValue = data[key];
+      const originalValue = props[key];
+
+      if (JSON.stringify(currentValue) !== JSON.stringify(originalValue)) {
+        result[key] = currentValue;
+      }
+    }
+
+    return result;
+  };
+
   const onSubmit = async (data: CompanyFormType) => {
     console.log("Form submitted:", data);
-    try{
-      if(!props.isEdit)
-        await createCompany(data);
+    try {
+      if (!id) await createCompany(data);
+      else {
+        const usedParams: Partial<CompanyFormType> = getChangedParams(data);
+        await editCompany(id, usedParams);
+      }
       navigate("/");
-    } catch(err){
+    } catch (err) {
       console.error(err);
     }
   };
@@ -320,7 +341,11 @@ export default function CreateForm(props: CreateFormProps) {
                       />
                       <ValidationError
                         isError={Boolean(errors.projects?.[index]?.name)}
-                        message={errors.projects ? errors.projects[index]?.name?.message: undefined}
+                        message={
+                          errors.projects
+                            ? errors.projects[index]?.name?.message
+                            : undefined
+                        }
                       />
                     </div>
 
@@ -343,7 +368,11 @@ export default function CreateForm(props: CreateFormProps) {
                       />
                       <ValidationError
                         isError={Boolean(errors.projects?.[index]?.price)}
-                        message={errors.projects ? errors.projects[index]?.price?.message: undefined}
+                        message={
+                          errors.projects
+                            ? errors.projects[index]?.price?.message
+                            : undefined
+                        }
                       />
                     </div>
 
@@ -367,7 +396,11 @@ export default function CreateForm(props: CreateFormProps) {
                       />
                       <ValidationError
                         isError={Boolean(errors.projects?.[index]?.status)}
-                        message={errors.projects ? errors.projects[index]?.status?.message: undefined}
+                        message={
+                          errors.projects
+                            ? errors.projects[index]?.status?.message
+                            : undefined
+                        }
                       />
                     </div>
 

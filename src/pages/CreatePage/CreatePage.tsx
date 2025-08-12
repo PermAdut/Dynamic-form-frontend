@@ -16,7 +16,6 @@ const CreatePage = () => {
         globalMarketKeySecretIndex=""
         projects={[]}
         btnText="Create company"
-        isEdit={false}
       />
     </div>
   );
