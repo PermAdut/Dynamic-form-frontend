@@ -1,9 +1,13 @@
 import { useNavigate } from "react-router";
 import styles from './EditCompanyItem.module.css'
-const EditCompanyItem = () => {
+export interface EditCompanyItemProps{
+  id: number;
+}
+const EditCompanyItem = (props: EditCompanyItemProps) => {
+  console.log(props.id);
   const navigate = useNavigate();
   const handleClick = async () => {
-    navigate('/edit')
+    navigate(`/edit/${props.id}`)
   }
   return (
     <>

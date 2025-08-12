@@ -23,6 +23,8 @@ export interface CreateFormProps{
   globalMarkets?: GlobalMarket[],
   globalMarketKeySecretIndex?: string,
   projects?: Project[],
+  btnText: string,
+  isEdit: boolean,
 }
 
 export default function CreateForm(props: CreateFormProps) {
@@ -61,7 +63,8 @@ export default function CreateForm(props: CreateFormProps) {
   const onSubmit = async (data: CompanyFormType) => {
     console.log("Form submitted:", data);
     try{
-      await createCompany(data);
+      if(!props.isEdit)
+        await createCompany(data);
       navigate("/");
     } catch(err){
       console.error(err);
@@ -383,7 +386,7 @@ export default function CreateForm(props: CreateFormProps) {
         </div>
 
         <button type="submit" className={styles.submit_btn}>
-          Create company
+          {props.btnText}
         </button>
       </form>
     </>

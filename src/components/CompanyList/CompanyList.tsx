@@ -12,6 +12,7 @@ const CompanyList = (props: CompanyListProps) => {
         {props.companies.map((el, index) => (
           <CompanyListItem
             key={index}
+            id={index}
             name={el.name}
             creationDate={el.creationDate}
             telephone={el.telephone}

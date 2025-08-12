@@ -3,8 +3,10 @@ import type { Company } from "../../interfaces/Company.interface";
 import ProjectList from "../ProjectList/ProjectList";
 import styles from "./CompanyListItem.module.css";
 import EditCompanyItem from "../EditCompanyItem/EditCompanyItem";
-
-const CompanyListItem = (props: Company) => {
+export interface CompanyListItemProps extends Company{
+  id: number;
+}
+const CompanyListItem = (props: CompanyListItemProps) => {
   const [globalMarkets, setGlobalMarkets] = useState<string | null>(null);
 
   useEffect(() => {
@@ -34,7 +36,7 @@ const CompanyListItem = (props: Company) => {
         </div>
       )}
       {props.projects && <ProjectList projects={props.projects} />}
-      <div className={styles.company_edit}><EditCompanyItem /></div>
+      <div className={styles.company_edit}><EditCompanyItem id={props.id}/></div>
     </div>
   );
 };
