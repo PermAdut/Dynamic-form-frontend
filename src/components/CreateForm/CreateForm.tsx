@@ -11,6 +11,7 @@ import { GlobalMarket } from "../../constants/GlobalMarket.enum";
 import { Status } from "../../constants/Status.enum";
 import FormGroup from "../../components/FormGroup/FormGroup";
 import ValidationError from "../ValidationError/ValidationError";
+import { createCompany } from "../../api/createCompany";
 
 export default function CreateForm() {
   const navigate = useNavigate();
@@ -45,9 +46,14 @@ export default function CreateForm() {
 
   const isGlobal = watch("isGlobal");
 
-  const onSubmit = (data: CompanyFormType) => {
+  const onSubmit = async (data: CompanyFormType) => {
     console.log("Form submitted:", data);
-    navigate("/");
+    try{
+      await createCompany(data);
+      navigate("/");
+    } catch(err){
+      console.error(err);
+    }
   };
 
   const addProject = () => {
