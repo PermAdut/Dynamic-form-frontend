@@ -1,11 +1,10 @@
-import { Route, Routes } from "react-router"
-import Page404 from "./pages/Page404/Page404"
-import MainPage from "./pages/MainPage/MainPage"
-import CreatePage from "./pages/CreatePage/CreatePage"
-import EditPage from "./pages/EditPage/EditPage"
+import { Route, Routes } from "react-router";
+import Page404 from "./pages/Page404/Page404";
+import MainPage from "./pages/MainPage/MainPage";
+import CreatePage from "./pages/CreatePage/CreatePage";
+import EditPage from "./pages/EditPage/EditPage";
 
 function App() {
-
   return (
     <>
       <Routes>
@@ -15,7 +14,7 @@ function App() {
         <Route path="/edit/:id" element={<EditPage />} />
       </Routes>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

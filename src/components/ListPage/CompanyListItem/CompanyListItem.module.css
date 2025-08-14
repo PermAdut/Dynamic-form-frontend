@@ -1,0 +1,67 @@
+.company_item {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px;
+  border: 2px solid #1a1a1a;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+}
+
+.company_item_title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #000;
+  line-height: 1.2;
+}
+
+.company_item_date {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #4a5568;
+}
+
+.company_telephone {
+  font-size: 1rem;
+  color: #2b6cb0;
+  font-weight: 500;
+}
+
+.company_item_location {
+  font-size: 1rem;
+  color: #2d3748;
+}
+
+.global_info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 12px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.company_global_market {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: #38a169;
+  padding: 6px 12px;
+  border-radius: 6px;
+  display: inline-block;
+}
+
+.company_global_index {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #4a5568;
+  background-color: #edf2f7;
+  padding: 6px 12px;
+  border-radius: 6px;
+  display: inline-block;
+}
+
+.company_edit {
+  position: absolute;
+  right: 10px;
+}

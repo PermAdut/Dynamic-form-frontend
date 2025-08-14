@@ -5,8 +5,7 @@ type EmptyLayoutPropsType = React.PropsWithChildren<{
 }>;
 
 const EmptyLayout = (props: EmptyLayoutPropsType) => {
-  if (!props.exist)
-    return <div className={styles.no_data}>{props.text}</div>;
+  if (!props.exist) return <div className={styles.no_data}>{props.text}</div>;
   return props.children;
 };
 export default EmptyLayout;

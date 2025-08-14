@@ -22,7 +22,17 @@ export const companySchema = object({
     .min(5, "Company name must be at least 5 symbols")
     .max(30, "Company name must max 30 symbols"),
   creationDate: date().required("Creation date required"),
-  telephone: string().optional(),
+  telephone: string()
+    .notRequired()
+    .when([], {
+      is: (value: string) => value && value.length > 0,
+      then: (schema) =>
+        schema.matches(
+          /^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$/,
+          "Telephone doesn't match required format",
+        ),
+      otherwise: (schema) => schema,
+    }),
   country: string()
     .required("Company country required")
     .oneOf(Object.values(Country), "Invalid country"),
@@ -35,15 +45,15 @@ export const companySchema = object({
         schema
           .min(1, "Choose at least one global market")
           .required("Global markets required for a global company"),
-      otherwise: (schema) => schema.optional(),
+      otherwise: (schema) => schema.notRequired(),
     }),
   globalMarketKeySecretIndex: string().when("isGlobal", {
     is: true,
     then: (schema) =>
       schema.required("Global market secret key index required"),
-    otherwise: (schema) => schema.optional(),
+    otherwise: (schema) => schema.notRequired(),
   }),
-  projects: array().of(projectsSchema).optional(),
+  projects: array().of(projectsSchema).notRequired(),
 });
 
 export type ProjectFormType = InferType<typeof projectsSchema>;

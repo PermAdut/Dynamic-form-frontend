@@ -1,33 +1,19 @@
-import CompanyList from "../../components/CompanyList/CompanyList";
-import AddCompanyItem from "../../components/AddCompanyItem/AddCompanyItem";
-import { useEffect, useState } from "react";
-import type { Company } from "../../interfaces/Company.interface";
-import { getCompanies } from "../../api/getCompanies";
-import { BackendError } from "../../interfaces/BackendError";
+import { useNavigate } from "react-router";
+import CompanyList from "../../components/ListPage/CompanyList/CompanyList";
+import useGetCompanies from "../../hooks/useGetCompanies";
+import ListPageBtn from "../../components/ListPage/ListPageBtn/ListPageBtn";
+
 const MainPage = () => {
-  const [companies, setCompanies] = useState<Company[]>([]);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [isError, setIsError] = useState<null | string>(null);
-  useEffect(() => {
-    const handleCompanies = async () => {
-      try {
-        setIsLoading(true);
-        setCompanies(await getCompanies());
-        setIsLoading(false);
-      } catch (err: unknown) {
-        if (err instanceof BackendError) {
-          setIsError(err.message);
-        }
-        setIsError("unknown error");
-      }
-    };
-    handleCompanies();
-  }, []);
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate("/create");
+  };
+  const [companies, isLoading, isError] = useGetCompanies();
   if (isError) return <div>Error: {isError}</div>;
   if (isLoading) return <div>Loading...</div>;
   return (
     <>
-      <AddCompanyItem />
+      <ListPageBtn text="Add new company" isEdit={false} cb={handleClick} />
       <CompanyList companies={companies} />
     </>
   );

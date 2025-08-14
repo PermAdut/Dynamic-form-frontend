@@ -1,4 +1,4 @@
-import CreateForm from "../../components/CreateForm/CreateForm";
+import CreateForm from "../../components/CreateForm/CreateForm/CreateForm";
 import { Country } from "../../constants/Country.enum";
 import styles from "./CreatePage.module.css";
 
