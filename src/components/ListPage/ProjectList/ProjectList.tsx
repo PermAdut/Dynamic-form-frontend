@@ -29,7 +29,7 @@ const ProjectList = (props: ProjectListProps) => {
             onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
             disabled={currentPage === 1}
           >
-            Back
+            B
           </button>
           <span className={styles.project_list_cur_page}>
             {currentPage} / {totalPages}
@@ -41,7 +41,7 @@ const ProjectList = (props: ProjectListProps) => {
             }
             disabled={currentPage === totalPages}
           >
-            Forward
+            F
           </button>
         </div>
       )}

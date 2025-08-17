@@ -8,7 +8,7 @@ import type {
 import { type CompanyFormType } from "../../../schema/company.schema";
 import ProjectItem from "./ProjectItem";
 import AddProjectButton from "./AddProjectButton";
-import styles from "../CreateForm/CreateForm.module.css";
+import styles from "./ProjectSection.module.css";
 import type { ICompany } from "../../../interfaces/Company.interface";
 
 interface ProjectsSectionProps {
@@ -27,7 +27,7 @@ export default function ProjectsSection({
   remove,
 }: ProjectsSectionProps) {
   return (
-    <div className={styles.form_group}>
+    <div className={styles.project_section}>
       <h3>Add project (not required)</h3>
       <AddProjectButton append={append} />
       {fields.length > 0 && (

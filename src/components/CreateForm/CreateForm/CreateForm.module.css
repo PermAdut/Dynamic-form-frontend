@@ -1,6 +1,5 @@
 .form {
-  display: flex;
-  flex-direction: column;
+  display: grid;
   gap: 20px;
   background: #ffffff;
   padding: 20px;
@@ -28,28 +27,11 @@
   color: #2d3748;
 }
 
-.project_list {
-  padding: 12px;
-  border: 1px solid #e2e8f0;
-  border-radius: 8px;
-}
-
-.project_list h4 {
-  margin: 0 0 8px;
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: #2d3748;
-}
-
-.project_grid {
+.project_item {
   display: grid;
   grid-template-columns: repeat(3, 1fr) auto;
-  gap: 12px;
-  align-items: end;
-}
-
-.project_item {
-  display: contents;
+  grid-auto-rows: min-content;
+  gap: 10px;
 }
 
 .add_project_btn,
@@ -76,4 +58,15 @@
 .remove_project_btn {
   background-color: #e53e3e;
   border-color: #c53030;
+  padding: 8px 16px;
+}
+
+@media screen and (max-width: 780px) {
+  .project_item {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    border: 2px solid #1a1a1a;
+    padding: 5px;
+    border-radius: 8px;
+  }
 }

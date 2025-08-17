@@ -10,6 +10,7 @@ export const projectsSchema = object({
     .max(30, "Project name must max 30 symbols"),
   price: string()
     .required("Price required")
+    .max(30, "Price must max 30 symbols")
     .matches(/^\d+(,\d{2})?$/, "Price must have specified format, ex., 10,00"),
   status: string()
     .required("Status required")

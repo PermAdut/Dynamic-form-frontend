@@ -10,7 +10,9 @@ const ProjectListItem = (props: Project) => {
       </h3>
       <p>
         Project price:{" "}
-        <span className={styles.project_item_price}>{props.price} $</span>
+        <span className={styles.project_item_price}>
+          {parseFloat(props.price.replace(",", ".")).toFixed(2)} $
+        </span>
       </p>
       <span>
         Project status:{" "}

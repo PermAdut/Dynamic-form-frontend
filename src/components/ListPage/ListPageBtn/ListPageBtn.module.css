@@ -1,25 +1,25 @@
-button {  
-  padding: 12px 24px;  
-  font-size: 1.2rem;  
-  font-weight: 600;  
-  text-transform: capitalize;  
-  color: #ffffff;  
-  border-radius: 8px;  
-  cursor: pointer;  
+button {
+  padding: 12px 24px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-transform: capitalize;
+  color: #ffffff;
+  border-radius: 8px;
+  cursor: pointer;
 }
 
-.add_btn {  
-  background-color: #38a169;  
-  border: 2px solid #2f855a;  
-  margin-bottom: 20px;  
-  margin-left: auto;  
-  position: sticky;  
-  top: 0;  
-  z-index: 10;  
-  left: 100%;  
-}  
+.add_btn {
+  background-color: #38a169;
+  border: 2px solid #2f855a;
+  margin-bottom: 20px;
+  margin-left: auto;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  left: 100%;
+}
 
-.edit_btn {  
-  background-color: #e4eb38;  
-  border: 2px solid #93990c;  
-}  
+.edit_btn {
+  background-color: #e4eb38;
+  border: 2px solid #93990c;
+}

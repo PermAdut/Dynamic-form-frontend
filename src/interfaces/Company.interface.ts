@@ -10,4 +10,4 @@ export interface ICompany {
   globalMarkets: (GlobalMarket | undefined)[] | undefined;
   globalMarketKeySecretIndex: string | undefined;
   projects: Project[] | undefined;
-};
+}
