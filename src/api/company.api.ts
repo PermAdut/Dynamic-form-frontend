@@ -10,7 +10,7 @@ class CompanyApi {
     this.axiosInstance = axios.create({
       baseURL: `${import.meta.env.VITE_API_SERVER_URL}/api/v1.0/companies`,
     });
-    axios.interceptors.request.use(
+    this.axiosInstance.interceptors.request.use(
       (res) => res,
       (err: any) => {
         throw new BackendError(err.message || "unknown error");

@@ -2,7 +2,7 @@ import styles from "./CreateForm.module.css";
 import { useForm, useFieldArray } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useNavigate, useParams } from "react-router";
-import {
+import defaultSchemaValues, {
   companySchema,
   type CompanyFormType,
 } from "../../../schema/company.schema";
@@ -29,16 +29,7 @@ export default function CreateForm(props: CreateFormProps) {
     setValue,
   } = useForm<ICompany, unknown, CompanyFormType>({
     resolver: yupResolver(companySchema),
-    defaultValues: {
-      name: props.name,
-      creationDate: props.creationDate,
-      telephone: props.telephone,
-      country: props.country,
-      isGlobal: props.isGlobal,
-      globalMarkets: props.globalMarkets,
-      globalMarketKeySecretIndex: props.globalMarketKeySecretIndex,
-      projects: props.projects,
-    },
+    defaultValues: defaultSchemaValues(props),
   });
 
   const { fields, append, remove } = useFieldArray({
