@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
-import type { Company } from "../interfaces/Company.interface";
 import { BackendError } from "../interfaces/BackendError";
 import { useNavigate, useParams } from "react-router";
 import companyApi from "../api/company.api";
+import type { CompanyResponseDto } from "../api/types/company.response.dto";
 
-export default function (): [Company | null, boolean, string | null] {
+export default function (): [CompanyResponseDto | null, boolean, string | null] {
   const { id } = useParams();
   const navigate = useNavigate();
-  const [company, setCompany] = useState<Company | null>(null);
+  const [company, setCompany] = useState<CompanyResponseDto | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isError, setIsError] = useState<null | string>(null);
   useEffect(() => {

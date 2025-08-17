@@ -1,4 +1,4 @@
-import type { Control, FieldErrors } from "react-hook-form";
+import type { Control, FieldErrors} from "react-hook-form";
 import { type CompanyFormType } from "../../../schema/company.schema";
 import { Country } from "../../../constants/Country.enum";
 import FormGroup from "../FormGroup/FormGroup";
@@ -6,9 +6,10 @@ import ValidationError from "../ValidationError/ValidationError";
 import InputField from "../InputField/InputField";
 import SelectField from "../SelectField/SelectField";
 import styles from "../CreateForm/CreateForm.module.css";
+import type { ICompany } from "../../../interfaces/Company.interface";
 
 interface BasicSectionInfoProps {
-  control: Control<CompanyFormType>;
+  control: Control<ICompany, unknown, CompanyFormType>;
   errors: FieldErrors<CompanyFormType>;
 }
 

@@ -1,13 +1,13 @@
 import type { Country } from "../constants/Country.enum";
 import type { GlobalMarket } from "../constants/GlobalMarket.enum";
 import { type Project } from "./Project.interface";
-export interface Company {
+export interface ICompany {
   name: string;
-  creationDate: string;
-  telephone?: string;
+  creationDate: Date;
+  telephone: string | undefined;
   country: Country;
-  isGlobal: boolean;
-  globalMarkets?: GlobalMarket[];
-  globalMarketKeySecretIndex?: string;
-  projects?: Project[];
-}
+  isGlobal: NonNullable<boolean | undefined>;
+  globalMarkets: (GlobalMarket | undefined)[] | undefined;
+  globalMarketKeySecretIndex: string | undefined;
+  projects: Project[] | undefined;
+};

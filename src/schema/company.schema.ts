@@ -32,7 +32,7 @@ export const companySchema = object({
           "Telephone doesn't match required format",
         ),
       otherwise: (schema) => schema,
-    }),
+    }).nonNullable(),
   country: string()
     .required("Company country required")
     .oneOf(Object.values(Country), "Invalid country"),
@@ -53,7 +53,7 @@ export const companySchema = object({
       schema.required("Global market secret key index required"),
     otherwise: (schema) => schema.notRequired(),
   }),
-  projects: array().of(projectsSchema).notRequired(),
+  projects: array().of(projectsSchema).notRequired().nonNullable(),
 });
 
 export type ProjectFormType = InferType<typeof projectsSchema>;

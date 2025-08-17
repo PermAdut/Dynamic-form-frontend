@@ -5,11 +5,12 @@ import {
 } from "react-hook-form";
 import { type CompanyFormType } from "../../../schema/company.schema";
 import styles from "../CreateForm/CreateForm.module.css";
+import type { ICompany } from "../../../interfaces/Company.interface";
 
 interface RadioGroupProps {
-  control: Control<CompanyFormType>;
+  control: Control<ICompany, unknown, Partial<CompanyFormType>>;
   name: "isGlobal";
-  setValue: UseFormSetValue<CompanyFormType>;
+  setValue: UseFormSetValue<ICompany>;
 }
 
 export default function RadioGroup({

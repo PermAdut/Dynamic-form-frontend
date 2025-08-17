@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import type { Company } from "../interfaces/Company.interface";
 import companyApi from "../api/company.api";
-export default function useGetCompanies(): [Company[], boolean, string | null] {
-  const [companies, setCompanies] = useState<Company[]>([]);
+import type { CompanyResponseDto } from "../api/types/company.response.dto";
+export default function useGetCompanies(): [CompanyResponseDto[], boolean, string | null] {
+  const [companies, setCompanies] = useState<CompanyResponseDto[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isError, setIsError] = useState<null | string>(null);
   useEffect(() => {

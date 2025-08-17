@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
-import type { Company } from "../../../interfaces/Company.interface";
 import ProjectList from "../ProjectList/ProjectList";
 import styles from "./CompanyListItem.module.css";
 import { useNavigate } from "react-router";
 import ListPageBtn from "../ListPageBtn/ListPageBtn";
-export interface CompanyListItemProps extends Company {
+import type { CompanyResponseDto } from "../../../api/types/company.response.dto";
+export interface CompanyListItemProps extends CompanyResponseDto {
   id: number;
 }
 const CompanyListItem = (props: CompanyListItemProps) => {

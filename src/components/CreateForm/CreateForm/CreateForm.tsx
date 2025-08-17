@@ -11,6 +11,8 @@ import GlobalCompanySection from "../GlobalCompanySection/GlobalCompanySection";
 import ProjectsSection from "../ProjectSection/ProjectSection";
 import { isEqual } from "../../../helpers/isEqual";
 import companyApi from "../../../api/company.api";
+import type { ICompany } from "../../../interfaces/Company.interface";
+
 export interface CreateFormProps extends CompanyFormType {
   btnText: string;
 }
@@ -23,9 +25,9 @@ export default function CreateForm(props: CreateFormProps) {
     control,
     handleSubmit,
     watch,
-    formState: { errors },
+    formState: { errors, dirtyFields },
     setValue,
-  } = useForm({
+  } = useForm<ICompany, unknown, CompanyFormType>({
     resolver: yupResolver(companySchema),
     defaultValues: {
       name: props.name,
@@ -47,9 +49,11 @@ export default function CreateForm(props: CreateFormProps) {
   const isGlobal = watch("isGlobal");
 
   const onSubmit = async (data: CompanyFormType) => {
+    console.log(dirtyFields);
     try {
       if (!id) {
         await companyApi.createCompany(data);
+        console.log("Form submited: ", data);
       } else {
         const changedParams: Partial<
           Record<keyof CompanyFormType, CompanyFormType[keyof CompanyFormType]>
@@ -60,6 +64,7 @@ export default function CreateForm(props: CreateFormProps) {
           }
         });
         await companyApi.editCompany(id, changedParams);
+        console.log("Form edited: ", changedParams);
       }
       navigate("/");
     } catch (err) {

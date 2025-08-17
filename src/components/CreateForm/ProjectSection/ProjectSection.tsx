@@ -12,9 +12,10 @@ import styles from "../CreateForm/CreateForm.module.css";
 import { Country } from "../../../constants/Country.enum";
 import { GlobalMarket } from "../../../constants/GlobalMarket.enum";
 import { Status } from "../../../constants/Status.enum";
+import type { ICompany } from "../../../interfaces/Company.interface";
 
 interface ProjectsSectionProps {
-  control: Control<CompanyFormType>;
+  control: Control<ICompany, unknown, CompanyFormType>;
   errors: FieldErrors<CompanyFormType>;
   fields: FieldArrayWithId<
     {
@@ -36,7 +37,7 @@ interface ProjectsSectionProps {
     "projects",
     "id"
   >[];
-  append: UseFieldArrayAppend<CompanyFormType, "projects">;
+  append: UseFieldArrayAppend<ICompany, "projects">;
   remove: UseFieldArrayRemove;
 }
 

@@ -1,10 +1,10 @@
 import { type UseFieldArrayAppend } from "react-hook-form";
-import { type CompanyFormType } from "../../../schema/company.schema";
 import { Status } from "../../../constants/Status.enum";
 import styles from "../CreateForm/CreateForm.module.css";
+import type { ICompany } from "../../../interfaces/Company.interface";
 
 interface AddProjectButtonProps {
-  append: UseFieldArrayAppend<CompanyFormType, "projects">;
+  append: UseFieldArrayAppend<ICompany, "projects">;
 }
 
 export default function AddProjectButton({ append }: AddProjectButtonProps) {

@@ -2,6 +2,7 @@
 import axios from "axios";
 import type { CompanyFormType } from "../schema/company.schema";
 import { BackendError } from "../interfaces/BackendError";
+import type { CompanyResponseDto } from "./types/company.response.dto";
 class CompanyApi {
   async createCompany(data: CompanyFormType) {
     try {
@@ -32,7 +33,7 @@ class CompanyApi {
     }
   }
 
-  async getCompany(id: number) {
+  async getCompany(id: number):Promise<CompanyResponseDto> {
     try {
       const response = await axios.get(
         `${import.meta.env.VITE_API_SERVER_URL}/api/v1.0/companies/${id}`,
@@ -43,7 +44,7 @@ class CompanyApi {
     }
   }
 
-  async getCompanies() {
+  async getCompanies():Promise<CompanyResponseDto[]> {
     try {
       const response = await axios.get(
         `${import.meta.env.VITE_API_SERVER_URL}/api/v1.0/companies`,

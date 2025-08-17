@@ -1,9 +1,9 @@
-import type { Company } from "../../../interfaces/Company.interface";
 import CompanyListItem from "../CompanyListItem/CompanyListItem";
 import EmptyLayout from "../../ui/EmptyLayout/EmptyLayout";
 import styles from "./CompanyList.module.css";
+import type { CompanyResponseDto } from "../../../api/types/company.response.dto";
 export interface CompanyListProps {
-  companies: Company[];
+  companies: CompanyResponseDto[];
 }
 const CompanyList = (props: CompanyListProps) => {
   return (

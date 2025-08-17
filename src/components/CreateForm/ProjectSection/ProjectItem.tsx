@@ -6,9 +6,10 @@ import ValidationError from "../ValidationError/ValidationError";
 import InputField from "../InputField/InputField";
 import SelectField from "../SelectField/SelectField";
 import styles from "../CreateForm/CreateForm.module.css";
+import type { ICompany } from "../../../interfaces/Company.interface";
 
 interface ProjectItemProps {
-  control: Control<CompanyFormType>;
+  control: Control<ICompany, unknown, CompanyFormType>;
   errors: FieldErrors<CompanyFormType>;
   index: number;
   remove: (index: number) => void;
@@ -37,6 +38,7 @@ export default function ProjectItem({
                 id={`projects.${index}.name`}
                 placeholder="Type project name"
                 {...field}
+                value={typeof field.value === "string" ? field.value : ""}
               />
             ),
           }}
@@ -62,6 +64,7 @@ export default function ProjectItem({
                 id={`projects.${index}.price`}
                 placeholder="10,00"
                 {...field}
+                value={typeof field.value === "string" || typeof field.value === "number" ? field.value : ""}
               />
             ),
           }}
@@ -86,6 +89,7 @@ export default function ProjectItem({
                 id={`projects.${index}.status`}
                 options={statusOptions}
                 {...field}
+                value={typeof field.value === 'string' ? field.value : ""}
               />
             ),
           }}

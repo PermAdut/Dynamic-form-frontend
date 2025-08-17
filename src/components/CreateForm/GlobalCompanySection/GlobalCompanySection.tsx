@@ -7,12 +7,13 @@ import RadioGroup from "../RadioGroup/RadioGroup";
 import SelectField from "../SelectField/SelectField";
 import InputField from "../InputField/InputField";
 import styles from "../CreateForm/CreateForm.module.css";
+import type { ICompany } from "../../../interfaces/Company.interface";
 
 interface GlobalCompanySectionProps {
-  control: Control<CompanyFormType>;
+  control: Control<ICompany, unknown, CompanyFormType>;
   errors: FieldErrors<CompanyFormType>;
   isGlobal: boolean;
-  setValue: UseFormSetValue<CompanyFormType>;
+  setValue: UseFormSetValue<ICompany>;
 }
 
 export default function GlobalCompanySection({
