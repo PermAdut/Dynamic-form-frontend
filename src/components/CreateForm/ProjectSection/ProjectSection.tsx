@@ -9,34 +9,12 @@ import { type CompanyFormType } from "../../../schema/company.schema";
 import ProjectItem from "./ProjectItem";
 import AddProjectButton from "./AddProjectButton";
 import styles from "../CreateForm/CreateForm.module.css";
-import { Country } from "../../../constants/Country.enum";
-import { GlobalMarket } from "../../../constants/GlobalMarket.enum";
-import { Status } from "../../../constants/Status.enum";
 import type { ICompany } from "../../../interfaces/Company.interface";
 
 interface ProjectsSectionProps {
   control: Control<ICompany, unknown, CompanyFormType>;
   errors: FieldErrors<CompanyFormType>;
-  fields: FieldArrayWithId<
-    {
-      name: string;
-      creationDate: Date;
-      telephone: string | undefined;
-      country: Country;
-      isGlobal: NonNullable<boolean | undefined>;
-      globalMarkets: (GlobalMarket | undefined)[] | undefined;
-      globalMarketKeySecretIndex: string | undefined;
-      projects:
-        | {
-            name: string;
-            price: string;
-            status: Status;
-          }[]
-        | undefined;
-    },
-    "projects",
-    "id"
-  >[];
+  fields: FieldArrayWithId<ICompany, "projects", "id">[];
   append: UseFieldArrayAppend<ICompany, "projects">;
   remove: UseFieldArrayRemove;
 }
