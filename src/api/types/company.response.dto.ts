@@ -10,7 +10,7 @@ export interface ProjectResponseDto {
 
 export interface CompanyResponseDto {
   name: string
-  creationDate: string
+  creationDate: Date
   telephone?: string
   country: Country
   isGlobal: boolean

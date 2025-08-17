@@ -24,7 +24,7 @@ const CompanyListItem = (props: CompanyListItemProps) => {
   return (
     <div className={styles.company_item}>
       <h2 className={styles.company_item_title}>{props.name}</h2>
-      <h3 className={styles.company_item_date}>Since: {props.creationDate}</h3>
+      <h3 className={styles.company_item_date}>Since: {props.creationDate.toString().slice(0,10)}</h3>
       {props.telephone && (
         <p className={styles.company_telephone}>Telephone: {props.telephone}</p>
       )}

@@ -7,7 +7,7 @@ class CompanyApi {
   async createCompany(data: CompanyFormType) {
     try {
       const response = await axios.post(
-        `${import.meta.env.VITE_API_SERVER_URL}/api/v1.0/companies/create`,
+        `${import.meta.env.VITE_API_SERVER_URL}/api/v1.0/companies`,
         data,
       );
       return response.data;
