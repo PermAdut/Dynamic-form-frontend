@@ -2,7 +2,6 @@ import type { Control, FieldErrors } from "react-hook-form";
 import { type CompanyFormType } from "../../../schema/company.schema";
 import { Status } from "../../../constants/Status.enum";
 import FormGroup from "../FormGroup/FormGroup";
-import ValidationError from "../ValidationError/ValidationError";
 import InputField from "../InputField/InputField";
 import SelectField from "../SelectField/SelectField";
 import styles from "../CreateForm/CreateForm.module.css";
@@ -25,84 +24,75 @@ export default function ProjectItem({
 
   return (
     <div className={styles.project_item}>
-      <div className={styles.form_group}>
-        <FormGroup
-          htmlFor={`projects.${index}.name`}
-          label="Project name"
-          controllerProps={{
-            name: `projects.${index}.name`,
-            control,
-            render: ({ field }) => (
-              <InputField
-                type="text"
-                id={`projects.${index}.name`}
-                placeholder="Type project name"
-                {...field}
-                value={typeof field.value === "string" ? field.value : ""}
-              />
-            ),
-          }}
-        />
-        <ValidationError
-          isError={Boolean(errors.projects?.[index]?.name)}
-          message={
-            errors.projects ? errors.projects[index]?.name?.message : undefined
-          }
-        />
-      </div>
+      <FormGroup
+        htmlFor={`projects.${index}.name`}
+        label="Project name"
+        controllerProps={{
+          name: `projects.${index}.name`,
+          control,
+          render: ({ field }) => (
+            <InputField
+              type="text"
+              id={`projects.${index}.name`}
+              placeholder="Type project name"
+              {...field}
+              value={typeof field.value === "string" ? field.value : ""}
+            />
+          ),
+        }}
+        isError={Boolean(errors.projects?.[index]?.name)}
+        message={
+          errors.projects ? errors.projects[index]?.name?.message : undefined
+        }
+      />
 
-      <div className={styles.form_group}>
-        <FormGroup
-          htmlFor={`projects.${index}.price`}
-          label="Price"
-          controllerProps={{
-            name: `projects.${index}.price`,
-            control,
-            render: ({ field }) => (
-              <InputField
-                type="text"
-                id={`projects.${index}.price`}
-                placeholder="10,00"
-                {...field}
-                value={typeof field.value === "string" || typeof field.value === "number" ? field.value : ""}
-              />
-            ),
-          }}
-        />
-        <ValidationError
-          isError={Boolean(errors.projects?.[index]?.price)}
-          message={
-            errors.projects ? errors.projects[index]?.price?.message : undefined
-          }
-        />
-      </div>
+      <FormGroup
+        htmlFor={`projects.${index}.price`}
+        label="Price"
+        controllerProps={{
+          name: `projects.${index}.price`,
+          control,
+          render: ({ field }) => (
+            <InputField
+              type="text"
+              id={`projects.${index}.price`}
+              placeholder="10,00"
+              {...field}
+              value={
+                typeof field.value === "string" ||
+                typeof field.value === "number"
+                  ? field.value
+                  : ""
+              }
+            />
+          ),
+        }}
+        isError={Boolean(errors.projects?.[index]?.price)}
+        message={
+          errors.projects ? errors.projects[index]?.price?.message : undefined
+        }
+      />
 
-      <div className={styles.form_group}>
-        <FormGroup
-          htmlFor={`projects.${index}.status`}
-          label="Status"
-          controllerProps={{
-            name: `projects.${index}.status`,
-            control,
-            render: ({ field }) => (
-              <SelectField
-                id={`projects.${index}.status`}
-                options={statusOptions}
-                {...field}
-                value={typeof field.value === 'string' ? field.value : ""}
-              />
-            ),
-          }}
-        />
-        <ValidationError
-          isError={Boolean(errors.projects?.[index]?.status)}
-          message={
-            errors.projects
-              ? errors.projects[index]?.status?.message
-              : undefined
-          }
-        />
-      </div>
+      <FormGroup
+        htmlFor={`projects.${index}.status`}
+        label="Status"
+        controllerProps={{
+          name: `projects.${index}.status`,
+          control,
+          render: ({ field }) => (
+            <SelectField
+              id={`projects.${index}.status`}
+              options={statusOptions}
+              {...field}
+              value={typeof field.value === "string" ? field.value : ""}
+            />
+          ),
+        }}
+        isError={Boolean(errors.projects?.[index]?.status)}
+        message={
+          errors.projects ? errors.projects[index]?.status?.message : undefined
+        }
+      />
 
       <button
         type="button"

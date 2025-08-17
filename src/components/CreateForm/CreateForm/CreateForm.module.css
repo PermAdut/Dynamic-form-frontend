@@ -77,9 +77,3 @@
   background-color: #e53e3e;
   border-color: #c53030;
 }
-
-.form_group {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
