@@ -1,11 +1,11 @@
 import type { Control, FieldErrors } from "react-hook-form";
 import { type CompanyFormType } from "../../../schema/company.schema";
 import { Status } from "../../../constants/Status.enum";
-import FormGroup from "../FormGroup/FormGroup";
 import InputField from "../InputField/InputField";
 import SelectField from "../SelectField/SelectField";
 import styles from "../CreateForm/CreateForm.module.css";
 import type { ICompany } from "../../../interfaces/Company.interface";
+import FieldComponent from "../FieldComponents/FieldComponent";
 
 interface ProjectItemProps {
   control: Control<ICompany, unknown, CompanyFormType>;
@@ -24,8 +24,8 @@ export default function ProjectItem({
 
   return (
     <div className={styles.project_item}>
-      <FormGroup
-        htmlFor={`projects.${index}.name`}
+      <FieldComponent
+        name="projects"
         label="Project name"
         controllerProps={{
           name: `projects.${index}.name`,
@@ -40,14 +40,11 @@ export default function ProjectItem({
             />
           ),
         }}
-        isError={Boolean(errors.projects?.[index]?.name)}
-        message={
-          errors.projects ? errors.projects[index]?.name?.message : undefined
-        }
+        errors={errors}
       />
 
-      <FormGroup
-        htmlFor={`projects.${index}.price`}
+      <FieldComponent
+        name="projects"
         label="Price"
         controllerProps={{
           name: `projects.${index}.price`,
@@ -67,14 +64,11 @@ export default function ProjectItem({
             />
           ),
         }}
-        isError={Boolean(errors.projects?.[index]?.price)}
-        message={
-          errors.projects ? errors.projects[index]?.price?.message : undefined
-        }
+        errors={errors}
       />
 
-      <FormGroup
-        htmlFor={`projects.${index}.status`}
+      <FieldComponent
+        name="projects"
         label="Status"
         controllerProps={{
           name: `projects.${index}.status`,
@@ -88,10 +82,7 @@ export default function ProjectItem({
             />
           ),
         }}
-        isError={Boolean(errors.projects?.[index]?.status)}
-        message={
-          errors.projects ? errors.projects[index]?.status?.message : undefined
-        }
+        errors={errors}
       />
 
       <button

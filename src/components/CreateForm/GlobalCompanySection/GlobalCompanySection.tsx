@@ -1,12 +1,12 @@
 import type { Control, FieldErrors, UseFormSetValue } from "react-hook-form";
 import { type CompanyFormType } from "../../../schema/company.schema";
 import { GlobalMarket } from "../../../constants/GlobalMarket.enum";
-import FormGroup from "../FormGroup/FormGroup";
 import RadioGroup from "../RadioGroup/RadioGroup";
 import SelectField from "../SelectField/SelectField";
 import InputField from "../InputField/InputField";
 import styles from "../CreateForm/CreateForm.module.css";
 import type { ICompany } from "../../../interfaces/Company.interface";
+import FieldComponent from "../FieldComponents/FieldComponent";
 
 interface GlobalCompanySectionProps {
   control: Control<ICompany, unknown, CompanyFormType>;
@@ -32,8 +32,8 @@ export default function GlobalCompanySection({
 
       {isGlobal && (
         <>
-          <FormGroup
-            htmlFor="globalMarkets"
+          <FieldComponent
+            name="globalMarkets"
             label="Global markets"
             controllerProps={{
               name: "globalMarkets",
@@ -55,12 +55,11 @@ export default function GlobalCompanySection({
                 />
               ),
             }}
-            isError={Boolean(errors.globalMarkets)}
-            message={errors.globalMarkets?.message}
+            errors={errors}
           />
 
-          <FormGroup
-            htmlFor="globalMarketKeySecretIndex"
+          <FieldComponent
+            name="globalMarketKeySecretIndex"
             label="Global market index"
             controllerProps={{
               name: "globalMarketKeySecretIndex",
@@ -75,8 +74,7 @@ export default function GlobalCompanySection({
                 />
               ),
             }}
-            isError={Boolean(errors.globalMarketKeySecretIndex)}
-            message={errors.globalMarketKeySecretIndex?.message}
+            errors={errors}
           />
         </>
       )}

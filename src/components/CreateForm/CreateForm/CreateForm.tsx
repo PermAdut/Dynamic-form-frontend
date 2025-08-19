@@ -31,12 +31,10 @@ export default function CreateForm(props: CreateFormProps) {
     resolver: yupResolver(companySchema),
     defaultValues: defaultSchemaValues(props),
   });
-
   const { fields, append, remove } = useFieldArray({
     control,
     name: "projects",
   });
-
   const isGlobal = watch("isGlobal");
 
   const onSubmit = async (data: CompanyFormType) => {

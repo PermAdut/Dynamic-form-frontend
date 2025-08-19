@@ -1,10 +1,10 @@
 import type { Control, FieldErrors } from "react-hook-form";
 import { type CompanyFormType } from "../../../schema/company.schema";
 import { Country } from "../../../constants/Country.enum";
-import FormGroup from "../FormGroup/FormGroup";
 import InputField from "../InputField/InputField";
 import SelectField from "../SelectField/SelectField";
 import type { ICompany } from "../../../interfaces/Company.interface";
+import FieldComponent from "../FieldComponents/FieldComponent";
 
 interface BasicSectionInfoProps {
   control: Control<ICompany, unknown, CompanyFormType>;
@@ -19,8 +19,8 @@ export default function BasicSectionInfo({
 
   return (
     <>
-      <FormGroup
-        htmlFor="name"
+      <FieldComponent
+        name="name"
         label="Company name"
         controllerProps={{
           name: "name",
@@ -35,12 +35,11 @@ export default function BasicSectionInfo({
             />
           ),
         }}
-        isError={Boolean(errors.name)}
-        message={errors.name?.message}
+        errors={errors}
       />
 
-      <FormGroup
-        htmlFor="creationDate"
+      <FieldComponent
+        name="creationDate"
         label="Creation date"
         controllerProps={{
           name: "creationDate",
@@ -59,12 +58,11 @@ export default function BasicSectionInfo({
             />
           ),
         }}
-        isError={Boolean(errors.creationDate)}
-        message={errors.creationDate?.message}
+        errors={errors}
       />
 
-      <FormGroup
-        htmlFor="telephone"
+      <FieldComponent
+        name="telephone"
         label="Telephone (not required)"
         controllerProps={{
           name: "telephone",
@@ -79,11 +77,10 @@ export default function BasicSectionInfo({
             />
           ),
         }}
-        isError={Boolean(errors.telephone)}
-        message={errors.telephone?.message}
+        errors={errors}
       />
-      <FormGroup
-        htmlFor="country"
+      <FieldComponent
+        name="country"
         label="Country"
         controllerProps={{
           name: "country",
@@ -101,8 +98,7 @@ export default function BasicSectionInfo({
             />
           ),
         }}
-        isError={Boolean(errors.country)}
-        message={errors.country?.message}
+        errors={errors}
       />
     </>
   );
