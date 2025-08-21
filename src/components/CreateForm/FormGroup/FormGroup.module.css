@@ -1,0 +1,31 @@
+.form_group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form_group_label {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #2d3748;
+}
+
+input,
+select {
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background-color: #f8f9fa;
+  transition: border-color 0.3s ease;
+}
+
+select[multiple] {
+  height: 100px;
+}
+
+.error_message {
+  color: #e53e3e;
+  font-size: 0.9rem;
+  margin-top: 4px;
+}
